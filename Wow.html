@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unblocked Website Viewer</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+    input {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <h1>Visit Unblocked Website</h1>
+    <input type="text" id="urlInput" placeholder="Enter website URL (example.com)">
+    <button onclick="openProxy()">Go</button>
+
+    <script>
+        function openProxy() {
+            let url = document.getElementById('urlInput').value.trim();
+            if (!url) {
+                alert('Please enter a website URL');
+                return;
+            }
+
+            // Add http:// if missing
+            if (!/^https?:\/\//i.test(url)) {
+                url = 'http://' + url;
+            }
+
+            // Free public proxy (CORS Anywhere)
+            const proxy = 'https://corsproxy.io/?';
+
+            // Redirect through proxy
+            window.location.href = proxy + encodeURIComponent(url);
+        }
+    </script>
+</body>
+</html>
+
