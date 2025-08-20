@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Open Site in about:blank</title>
+</head>
+<body>
+  <h2>Open Website in about:blank</h2>
+  <form id="siteForm">
+    <input type="text" id="urlInput" placeholder="Enter website URL (https://...)" size="40" required>
+    <button type="submit">Open</button>
+  </form>
+
+  <script>
+    document.getElementById("siteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let url = document.getElementById("urlInput").value.trim();
+
+      if (!/^https?:\/\//i.test(url)) {
+        url = "https://" + url;
+      }
+
+      // Open in about:blank and redirect
+      let newWin = window.open("about:blank", "_blank");
+      newWin.location.href = url;
+    });
+  </script>
+</body>
+</html>
